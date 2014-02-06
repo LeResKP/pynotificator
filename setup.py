@@ -3,7 +3,7 @@ import sys, os
 
 version = '0.0'
 
-setup(name='pynotify_daemon/',
+setup(name='pynotify_daemon',
       version=version,
       description="",
       long_description="""\
@@ -18,9 +18,16 @@ setup(name='pynotify_daemon/',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-          # -*- Extra requirements: -*-
+        'SQLAlchemy',
+        'zope.sqlalchemy',
+        'sqla_declarative',
+        'python-daemon',
       ],
       entry_points="""
       # -*- Entry points: -*-
+      [console_scripts]
+      notificator_daemon = pynotify_daemon.notification_daemon:main
+      notificator_server = pynotify_daemon.server:main
+      notificator_client = pynotify_daemon.client:main
       """,
       )
